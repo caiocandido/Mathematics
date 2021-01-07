@@ -1,5 +1,6 @@
 // Please, verify the version of your compiler before and 
-// avoid to change the code in order to run the simulations
+// be careful before change the code in order to run the 
+// simulations
 // Any doubts or suggestions feel free to send me an email 
 // caioeduardocandido@gmail.com
 
@@ -114,13 +115,13 @@ void clearScreen(){
 }
 
 void ERROR(){
-	cout << "ERROR, something went wrong and the program is exiting!" << endl;
+	cout << "ERROR, something went wrong. The program is exiting!" << endl;
 	exit(0);
 }
 
 string readHexacode(){
-	printf ("Escreva sem espaços a palavra do hexacode que deseja gerar no MOG\n"); 
-	printf ("Escreva w para omega e W para omega^barra");
+	printf ("Digite sem espaços a palavra do hexacode que deseja gerar no MOG\n"); 
+	printf ("Digite w para representar omega e W para omega^barra");
 	cout << endl;
 	
 	string hexacode;
@@ -159,7 +160,7 @@ void option1(){
 
 	if (isNotHexacode(hexacode)) ERROR();
 
-	cout << "Representações do hexacode: " << hexacode << endl;
+	cout << endl << endl << "Representações do hexacode: " << hexacode << endl;
 
 	// change '0' to 0, '1' to 1, 'w' to 2 and 'W' to 3
 	string auxHexacode = transformHexacode(hexacode);
@@ -495,6 +496,7 @@ void clearDataProcessed(){
 }
 
 int print;
+
 void dfs(int id, bool m0){
 	if (sextet[id].visited) return;
 
@@ -559,7 +561,7 @@ void dfs(int id, bool m0){
 
 void option2(){
 	// Clearing datas processed
-	//clearDataProcessed();
+	clearDataProcessed();
 
 	initOrbitRepresentatives();
 	for (int i = 0; i < N; i++){
@@ -572,6 +574,7 @@ void option2(){
 		printf ("Tamanho da órbita do representante %d: %d\n", i+1, sextet[find(i)].sizeOfTree);
 	cout << endl << endl;
 
+	printf ("OPÇÕES:\n");
 	printf ("Digite 1) para gerar todos os sextetos da órbita 1\n");
 	printf ("Digite 2) para gerar todos os sextetos da órbita 2\n");
 	printf ("Digite 3) para gerar todos os sextetos da órbita 3\n");
@@ -587,7 +590,7 @@ void option2(){
 	clearDataProcessed();
 	initOrbitRepresentatives();
 	print = 1;
-
+	
 	if (reading == "1") {dfs(0,0);}
 	else if (reading == "2") {dfs(1,0);}
 	else if (reading == "3") {dfs(2,0);}
@@ -657,103 +660,9 @@ void printMenu(){
 
 int main(){
 	initialization();
+
 	while(true)
 		printMenu();
 }
 
 
-
-
-
-
-
-
-/*
-void initZeroRepresentation(){
-	zeroRepresentation[0][0] = '1';
-	zeroRepresentation[0][1] = '0';
-	zeroRepresentation[0][2] = '0';
-	zeroRepresentation[0][3] = '0';
-
-	zeroRepresentation[1][0] = '0';
-	zeroRepresentation[1][1] = '1';
-	zeroRepresentation[1][2] = '1';
-	zeroRepresentation[1][3] = '1';
-
-	zeroRepresentation[2][0] = '0';
-	zeroRepresentation[2][1] = '0';
-	zeroRepresentation[2][2] = '0';
-	zeroRepresentation[2][3] = '0';
-
-	zeroRepresentation[3][0] = '1';
-	zeroRepresentation[3][1] = '1';
-	zeroRepresentation[3][2] = '1';
-	zeroRepresentation[3][3] = '1';
-}
-
-void initOneRepresentation(){
-	oneRepresentation[0][0] = '0';
-	oneRepresentation[0][1] = '1';
-	oneRepresentation[0][2] = '0';
-	oneRepresentation[0][3] = '0';
-
-	oneRepresentation[1][0] = '1';
-	oneRepresentation[1][1] = '0';
-	oneRepresentation[1][2] = '1';
-	oneRepresentation[1][3] = '1';
-
-	oneRepresentation[2][0] = '1';
-	oneRepresentation[2][1] = '1';
-	oneRepresentation[2][2] = '0';
-	oneRepresentation[2][3] = '0';
-
-	oneRepresentation[3][0] = '0';
-	oneRepresentation[3][1] = '0';
-	oneRepresentation[3][2] = '1';
-	oneRepresentation[3][3] = '1';
-}
-
-void initwRepresentation(){
-	wRepresentation[0][0] = '0';
-	wRepresentation[0][1] = '0';
-	wRepresentation[0][2] = '1';
-	wRepresentation[0][3] = '0';
-
-	wRepresentation[1][0] = '1';
-	wRepresentation[1][1] = '1';
-	wRepresentation[1][2] = '0';
-	wRepresentation[1][3] = '1';
-
-	wRepresentation[2][0] = '1';
-	wRepresentation[2][1] = '0';
-	wRepresentation[2][2] = '1';
-	wRepresentation[2][3] = '0';
-
-	wRepresentation[3][0] = '0';
-	wRepresentation[3][1] = '1';
-	wRepresentation[3][2] = '0';
-	wRepresentation[3][3] = '1';
-}
-
-
-void initWRepresentation(){
-	WRepresentation[0][0] = '0';
-	WRepresentation[0][1] = '0';
-	WRepresentation[0][2] = '0';
-	WRepresentation[0][3] = '1';
-
-	WRepresentation[1][0] = '1';
-	WRepresentation[1][1] = '1';
-	WRepresentation[1][2] = '1';
-	WRepresentation[1][3] = '0';
-
-	WRepresentation[2][0] = '1';
-	WRepresentation[2][1] = '0';
-	WRepresentation[2][2] = '0';
-	WRepresentation[2][3] = '1';
-
-	WRepresentation[3][0] = '0';
-	WRepresentation[3][1] = '1';
-	WRepresentation[3][2] = '1';
-	WRepresentation[3][3] = '0';
-}*/
